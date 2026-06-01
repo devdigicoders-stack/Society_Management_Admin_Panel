@@ -12,6 +12,10 @@ const UserManagement = () => {
   const [editingUser, setEditingUser] = useState(null);
   const [editForm, setEditForm] = useState({ name: '', email: '', phone: '', role: '' });
 
+  // Create State
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
+  const [createForm, setCreateForm] = useState({ name: '', email: '', phone: '', role: 'FLAT_OWNER', password: '' });
+
   const fetchUsers = async () => {
     try {
       const response = await api.get('/users');
@@ -69,14 +73,33 @@ const UserManagement = () => {
     }
   };
 
+  const handleCreateSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post('/users', createForm);
+      setIsCreatingUser(false);
+      setCreateForm({ name: '', email: '', phone: '', role: 'FLAT_OWNER', password: '' });
+      fetchUsers();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to create user');
+    }
+  };
+
   if (loading) return <div>Loading users...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="page-container glass-panel">
       <div className="page-header">
-        <h2>User Management</h2>
-        <p>Approve, block, edit, and delete access for all registered users.</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+          <div>
+            <h2>User Management</h2>
+            <p>Approve, block, edit, and delete access for all registered users.</p>
+          </div>
+          <button onClick={() => setIsCreatingUser(true)} className="glass-button">
+            Create User
+          </button>
+        </div>
       </div>
 
       <div className="table-container">
@@ -173,6 +196,45 @@ const UserManagement = () => {
                 </select>
               </div>
               <button type="submit" className="glass-button full-width">Save Changes</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {isCreatingUser && (
+        <div className="modal-overlay">
+          <div className="modal-content glass-panel">
+            <div className="modal-header">
+              <h3>Create User</h3>
+              <button onClick={() => setIsCreatingUser(false)} className="icon-btn"><X size={20}/></button>
+            </div>
+            <form onSubmit={handleCreateSubmit} className="modal-form">
+              <div className="form-group">
+                <label>Name</label>
+                <input className="glass-input" value={createForm.name} onChange={e => setCreateForm({...createForm, name: e.target.value})} required />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input className="glass-input" type="email" value={createForm.email} onChange={e => setCreateForm({...createForm, email: e.target.value})} />
+              </div>
+              <div className="form-group">
+                <label>Phone</label>
+                <input className="glass-input" value={createForm.phone} onChange={e => setCreateForm({...createForm, phone: e.target.value})} required />
+              </div>
+              <div className="form-group">
+                <label>Role</label>
+                <select className="glass-input" value={createForm.role} onChange={e => setCreateForm({...createForm, role: e.target.value})}>
+                  <option value="FLAT_OWNER">FLAT_OWNER</option>
+                  <option value="MANAGER">MANAGER</option>
+                  <option value="GUARD">GUARD</option>
+                  <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input className="glass-input" type="password" value={createForm.password} onChange={e => setCreateForm({...createForm, password: e.target.value})} required minLength={6} />
+              </div>
+              <button type="submit" className="glass-button full-width">Create User</button>
             </form>
           </div>
         </div>
