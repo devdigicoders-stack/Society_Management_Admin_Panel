@@ -32,7 +32,7 @@ const AdminLayout = () => {
       <aside className={`sidebar glass-panel ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h2>Society Admin</h2>
-          <span className="badge info">{user?.role?.replace('_', ' ')}</span>
+          <span className="badge info ">{user?.role?.replace('_', ' ')}</span>
           <button className="close-sidebar-btn" onClick={closeSidebar}>
             <X size={24} />
           </button>
