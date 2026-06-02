@@ -50,8 +50,8 @@ const FlatOwners = () => {
               <tr key={owner._id}>
                 <td>
                   <div className="user-info">
-                    <span className="user-name">{owner.user?.name || 'Unknown'}</span>
-                    <span className="user-email">{owner.user?.phone}</span>
+                    <span className="user-name">{owner?.name || 'Unknown'}</span>
+                    <span className="user-email">{owner?.phone}</span>
                   </div>
                 </td>
                 <td>{owner.societyName}</td>
