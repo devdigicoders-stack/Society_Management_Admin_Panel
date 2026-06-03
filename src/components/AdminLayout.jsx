@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LayoutDashboard, Users, Home, Shield, LogOut, Menu, X, BookOpen, Clock } from 'lucide-react';
+import { LayoutDashboard, Users, Home, Shield, LogOut, Menu, X, BookOpen, Clock, Activity } from 'lucide-react';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
@@ -74,6 +74,10 @@ const AdminLayout = () => {
               <NavLink to="/daily-staff" onClick={closeSidebar} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
                 <Clock size={20} />
                 <span>Daily Staff</span>
+              </NavLink>
+              <NavLink to="/activities" onClick={closeSidebar} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <Activity size={20} />
+                <span>Recent Activities</span>
               </NavLink>
             </>
           )}

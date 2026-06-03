@@ -10,6 +10,7 @@ import Guards from './pages/Guards';
 import GuestHistory from './pages/GuestHistory';
 import DailyStaff from './pages/DailyStaff';
 import Societies from './pages/Societies';
+import RecentActivities from './pages/RecentActivities';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="guards" element={<Guards />} />
             <Route path="guest-history" element={<GuestHistory />} />
             <Route path="daily-staff" element={<DailyStaff />} />
+            <Route path="activities" element={<RecentActivities />} />
           </Route>
         </Routes>
       </Router>
