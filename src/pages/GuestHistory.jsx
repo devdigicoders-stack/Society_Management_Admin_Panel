@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import { Edit2, Trash2, X } from 'lucide-react';
 
@@ -51,7 +52,7 @@ const GuestHistory = () => {
     }
   };
 
-  if (loading) return <div>Loading guest history...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
@@ -168,3 +169,5 @@ const GuestHistory = () => {
 };
 
 export default GuestHistory;
+
+

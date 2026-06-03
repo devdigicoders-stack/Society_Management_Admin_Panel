@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import { Edit2, Trash2, X } from 'lucide-react';
 
@@ -83,7 +84,7 @@ const Guards = () => {
     }
   };
 
-  if (loading) return <div>Loading guards...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
@@ -244,3 +245,5 @@ const Guards = () => {
 };
 
 export default Guards;
+
+

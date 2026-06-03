@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import './FlatOwners.css';
 import { Edit2, Trash2, X } from 'lucide-react';
@@ -96,7 +97,7 @@ const FlatOwners = () => {
     }
   };
 
-  if (loading) return <div>Loading flat owners...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
@@ -275,3 +276,5 @@ const FlatOwners = () => {
 };
 
 export default FlatOwners;
+
+

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { Edit2, Trash2, X } from 'lucide-react';
@@ -74,7 +75,7 @@ const DailyStaff = () => {
     }
   };
 
-  if (loading) return <div>Loading daily staff...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
@@ -211,3 +212,5 @@ const DailyStaff = () => {
 };
 
 export default DailyStaff;
+
+

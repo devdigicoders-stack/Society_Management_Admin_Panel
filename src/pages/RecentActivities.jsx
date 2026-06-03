@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import { Activity, UserPlus, LogIn, Clock } from 'lucide-react';
 import './Dashboard.css';
@@ -25,7 +26,7 @@ const RecentActivities = () => {
     fetchActivities();
   }, []);
 
-  if (loading) return <div style={{ padding: '20px' }}>Loading activities...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div style={{ padding: '20px', color: 'red' }}>{error}</div>;
 
   return (
@@ -88,3 +89,5 @@ const RecentActivities = () => {
 };
 
 export default RecentActivities;
+
+

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import api from '../services/api';
 import { CheckCircle, XCircle, Unlock, Lock, Edit2, Trash2, X } from 'lucide-react';
 import './UserManagement.css';
@@ -85,7 +86,7 @@ const UserManagement = () => {
     }
   };
 
-  if (loading) return <div>Loading users...</div>;
+  if (loading) return <Loader text="Loading..." />;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
@@ -244,3 +245,5 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
+
+
