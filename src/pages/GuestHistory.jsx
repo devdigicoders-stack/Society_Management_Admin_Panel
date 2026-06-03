@@ -69,6 +69,7 @@ const GuestHistory = () => {
               <th>Phone</th>
               <th>Purpose</th>
               <th>Vehicle</th>
+              <th>Society</th>
               <th>Status</th>
               <th>Host (Flat Owner)</th>
               <th>Entry Time</th>
@@ -86,6 +87,11 @@ const GuestHistory = () => {
                 <td>{guest.guestPhone}</td>
                 <td>{guest.purpose}</td>
                 <td>{guest.vehicleNumber || 'N/A'}</td>
+                <td>
+                  <span className="badge info">
+                    {guest.societyId?.name || 'N/A'}
+                  </span>
+                </td>
                 <td>
                   <span className={`badge ${
                     guest.status === 'APPROVED' ? 'success' : 
@@ -119,7 +125,7 @@ const GuestHistory = () => {
             ))}
             {history.length === 0 && (
               <tr>
-                <td colSpan="8" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No guest history found.</td>
+                <td colSpan="9" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No guest history found.</td>
               </tr>
             )}
           </tbody>

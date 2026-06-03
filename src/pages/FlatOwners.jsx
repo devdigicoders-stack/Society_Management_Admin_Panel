@@ -116,6 +116,7 @@ const FlatOwners = () => {
           <thead>
             <tr>
               <th>Owner Name</th>
+              <th>Society</th>
               <th>Tower / Block</th>
               <th>Flat No.</th>
               <th>Vehicles</th>
@@ -130,6 +131,11 @@ const FlatOwners = () => {
                     <span className="user-name">{owner.user?.name || 'Unknown'}</span>
                     <span className="user-email">{owner.user?.phone}</span>
                   </div>
+                </td>
+                <td>
+                  <span style={{ fontWeight: '500', color: '#64748b' }}>
+                    {owner.societyId?.name || 'N/A'}
+                  </span>
                 </td>
                 <td>{owner.tower} (Floor: {owner.floor})</td>
                 <td><span className="badge info">{owner.flatNumber}</span></td>
@@ -165,7 +171,7 @@ const FlatOwners = () => {
             ))}
             {owners.length === 0 && (
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No flat owners found.</td>
+                <td colSpan="6" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No flat owners found.</td>
               </tr>
             )}
           </tbody>

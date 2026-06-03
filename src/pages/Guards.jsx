@@ -103,6 +103,7 @@ const Guards = () => {
           <thead>
             <tr>
               <th>Guard Name</th>
+              <th>Society</th>
               <th>Phone</th>
               <th>Gate No.</th>
               <th>Shift</th>
@@ -116,6 +117,11 @@ const Guards = () => {
                   <div className="user-info">
                     <span className="user-name">{guard.user?.name || 'Unknown'}</span>
                   </div>
+                </td>
+                <td>
+                  <span style={{ fontWeight: '500', color: '#64748b' }}>
+                    {guard.societyId?.name || guard.societyName || 'N/A'}
+                  </span>
                 </td>
                 <td>{guard.user?.phone}</td>
                 <td><span className="badge warning">{guard.gateNumber}</span></td>
@@ -141,7 +147,7 @@ const Guards = () => {
             ))}
             {guards.length === 0 && (
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No guards found.</td>
+                <td colSpan="6" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>No guards found.</td>
               </tr>
             )}
           </tbody>
