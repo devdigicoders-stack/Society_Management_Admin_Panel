@@ -9,6 +9,7 @@ import FlatOwners from './pages/FlatOwners';
 import Guards from './pages/Guards';
 import GuestHistory from './pages/GuestHistory';
 import DailyStaff from './pages/DailyStaff';
+import Societies from './pages/Societies';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
               </ProtectedRoute>
             } />
             
-            
+            <Route path="societies" element={<Societies />} />
             <Route path="flat-owners" element={<FlatOwners />} />
             <Route path="guards" element={<Guards />} />
             <Route path="guest-history" element={<GuestHistory />} />

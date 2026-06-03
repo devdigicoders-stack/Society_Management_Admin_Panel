@@ -45,10 +45,16 @@ const AdminLayout = () => {
           </NavLink>
           
           {user?.role === 'SUPER_ADMIN' && (
-            <NavLink to="/users" onClick={closeSidebar} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              <Users size={20} />
-              <span>Users</span>
-            </NavLink>
+            <>
+              <NavLink to="/users" onClick={closeSidebar} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <Users size={20} />
+                <span>Users</span>
+              </NavLink>
+              <NavLink to="/societies" onClick={closeSidebar} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <LayoutDashboard size={20} />
+                <span>Societies</span>
+              </NavLink>
+            </>
           )}
 
           {(user?.role === 'SUPER_ADMIN' || user?.role === 'MANAGER') && (
